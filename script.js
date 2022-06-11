@@ -2,12 +2,25 @@
 // add event listeners to cells, calling a mark function on click
 // add mark function to player. mark will need to use player name and symbol
 
+const player = (name, symbol) => {
+   
+    // Mark with symbol on cell click
+    const mark = (e) => {
+        alert('hello');
+        console.log(e.target);
+    }
+    return {mark};
+}
+
+const p1 = player('jeff', 'x');
+
 const board = (() => {
-    let values = ['X', 'O', 'X', 'O', 'X', 'O','X', 'O', 'X'];
+    let values = ['', '', '', '', '', '', '', '', ''];
     let cells = getBoard();
     
     const init = () => {
         render();
+        listen();
     }
     function getBoard () { 
         const cells = Array.from(document.querySelectorAll('.cell'));
@@ -22,18 +35,13 @@ const board = (() => {
     // bind cell event listeners
     const listen = () => {
         for(let i = 0; i <= 8; i++) {
-            cells[i].addEventListener('click', player.mark);
+            cells[i].addEventListener('click', p1.mark);
         }
     }
 
-    return {init, listen};
+    return {init};
     })();
-
-const player = (name, symbol) => {
+    
+    board.init();
   
-    return {};
-}
 
-board.init();
-// const p1 = player('Alex', 'X');   ---- this was able too use board.test()
-// p1.play();

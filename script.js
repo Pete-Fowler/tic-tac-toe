@@ -6,13 +6,13 @@ const player = (name, symbol) => {
    
     // Mark with symbol on cell click
     const mark = (e) => {
-        alert('hello');
-        console.log(e.target);
+        e.target.textContent = `${symbol}`;
     }
     return {mark};
 }
 
 const p1 = player('jeff', 'x');
+
 
 const board = (() => {
     let values = ['', '', '', '', '', '', '', '', ''];

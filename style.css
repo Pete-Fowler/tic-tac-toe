@@ -1,26 +1,23 @@
  body {
     min-height: 100vh;
-    display: grid;
-    grid: 100px 1fr 175px / 25% 75%;
-    grid-template-areas: 
-    "nav header"
-    "nav main"
-    "nav footer";
+  
  }
 
 #header {
-    grid-area: header;
     font-size: 6rem;
     text-shadow: 2px 2px 4px gray;
+    display: flex;
+    justify-content: center;
 }
 
 #nav {
-    grid-area: nav;
+    background-color: lightgray;
 }
 
 #main {
     background-color: white;
-    grid-area: main;
+    display: flex;
+    justify-content: center;
 }
 
 #board {
@@ -50,5 +47,21 @@
 }
 
 #text-box {
-    
+    margin-top: 30px;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+#new-game {
+    height: 50px;
+    width: 120px;
+    background-color: rgb(100, 194, 90);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+    margin: 200px 50px 5px 50px;
+}
+
+#invis-box {
+    width: 220px;
 }

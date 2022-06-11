@@ -6,6 +6,10 @@ const player = (name, symbol) => {
 
 const p1 = player('jeff', 'X'); // for testing, will need to be moved to gameplay handler
 
+const play = (() => {
+    let currentPlayer = p1;
+    return {currentPlayer}
+})();
 
 const board = (() => {
     let values = ['', '', '', '', '', '', '', '', ''];
@@ -33,14 +37,14 @@ const board = (() => {
     }
        // Mark with symbol on cell click
     const mark = (e) => {
-        e.target.textContent = `${p1.symbol}`;
-        values[e.target.id] = p1.symbol;
-        console.log(values);
+        e.target.textContent = `${play.currentPlayer.symbol}`;
+        values[e.target.id] = play.currentPlayer.symbol;
     }
 
     return {init};
     })();
     
-    board.init();
+    // move this to gamePlay and activate on new game button click
+    board.init(); 
   
 

@@ -8,11 +8,16 @@ const player = (name, symbol) => {
 
 const play = (() => {
 
-    // function actived on click of new game button
-    //  it will 
+    // Handles click of New Game button
+   
     const newGame = () => {
-        let p1 = prompt("What is player one's name?");
-        let p2 = prompt("what is player two's name?");
+        let p1Name = prompt("What is player one's name?");
+        let p2Name = prompt("what is player two's name?");
+        board.init();
+        let p1 = player(p1Name, 'X');
+        let p2 = player(p2Name, 'O');
+        let currentPlayer = p1;
+        return {p1, p2, currentPlayer};
     }
 
     return {newGame};
@@ -65,7 +70,5 @@ const board = (() => {
     return {init};
     })();
     
-    // move this to gamePlay and activate on new game button click
-    board.init(); 
   
 

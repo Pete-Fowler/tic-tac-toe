@@ -82,14 +82,47 @@
 
 #name-box {
     width: 300px;
-    font-size: 3rem;
+    font-size: 2.2rem;
     display: flex;
     flex-direction: column;
 }
 
 #name-box p {
     margin: 10px;
-    text-shadow: 2px 2px 4px gray;
+    text-shadow: 2px 2px 4px lightgray;
+    overflow: hidden;
 }
 
 
+.name-box {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.names {
+    align-self: center;
+}
+
+#p1 {
+    margin-left: 25px;
+    transition: 1.1s;
+}
+
+#name1 {
+
+}
+
+#p2 {
+    margin-left: 25px;
+    transition: 1.1s;
+}
+
+#name2 {
+
+}
+
+.active {
+    transform: scale(1.2);
+    transition: 1.1s;
+}

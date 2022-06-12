@@ -59,6 +59,8 @@ const board = (() => {
 const play = (() => {
     let p1, p2, currentPlayer;
     const text = document.querySelector('#text-box');
+    const p1Box = document.querySelector('#p1');
+    const p2Box = document.querySelector('#p2');
     
     const newGame = () => {
         board.init();
@@ -79,12 +81,10 @@ const play = (() => {
     }
 
     const addNamesUi = (p1Name, p2Name) => {
-        const p1Box = document.querySelector('#p1');
-        const p2Box = document.querySelector('#p2');
-
         let name1 = document.createElement('p');
         name1.id = 'name1';
         name1.className = 'names';
+        p1Box.classList.add('active');
         name1.textContent = p1Name;
         p1Box.appendChild(name1);
 
@@ -95,12 +95,18 @@ const play = (() => {
         p2Box.appendChild(name2);
     }
 
+    const toggleNamesUi = () => {
+        p1Box.classList.toggle('active');
+        p2Box.classList.toggle('active');
+    }
+
     const switchPlayers = () => {
         if (currentPlayer === p1) {
             currentPlayer = p2;
         } else {
             currentPlayer = p1;
         }
+        toggleNamesUi();
         return currentPlayer;
     }
 

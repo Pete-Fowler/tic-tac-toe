@@ -1,7 +1,8 @@
 
 
 const player = (name, symbol) => {
-   return {name, symbol};
+  
+    return { name, symbol}
 }
 
 const board = (() => {
@@ -27,8 +28,8 @@ const board = (() => {
         }
     }
     const mark = (e) => {
-        e.target.textContent = `${play.currentPlayer.symbol}`;
-        values[e.target.id] = play.currentPlayer.symbol;
+        e.target.textContent = `${play.getPlayer().symbol}`;
+        values[e.target.id] = play.getPlayer().symbol;
         play.switchPlayers();
     }
 
@@ -36,14 +37,18 @@ const board = (() => {
     })();
 
 const play = (() => {
-    let p1Name = prompt("What is player one's name?");
-    let p2Name = prompt("what is player two's name?");
-    board.init();
+    let p1, p2, currentPlayer;
     
-    let p1 = player(p1Name, 'X');
-    let p2 = player(p2Name, 'O');
-    let currentPlayer = p1;
-    
+    const newGame = () => {
+        let p1Name = prompt("What is player one's name?");
+        let p2Name = prompt("what is player two's name?");
+        board.init();
+
+        p1 = player(p1Name, 'X');
+        p2 = player(p2Name, 'O');
+        currentPlayer = p1;
+    }
+   
     const switchPlayers = () => {
         if (currentPlayer === p1) {
             currentPlayer = p2;
@@ -53,12 +58,16 @@ const play = (() => {
         return currentPlayer;
     }
 
-    return {currentPlayer, switchPlayers};
+    const getPlayer = () => {
+        return currentPlayer;
+    }
+
+    return {newGame, getPlayer, switchPlayers};
 })();
 
 const newGameBtn = (() => {
     const btn = document.getElementById("new-game");
-    btn.addEventListener('click', board.init);
+    btn.addEventListener('click', play.newGame);
 })();
 
 

@@ -2,7 +2,7 @@
 
 const player = (name, symbol) => {
   
-    return { name, symbol}
+    return {name, symbol}
 }
 
 const board = (() => {
@@ -39,6 +39,7 @@ const board = (() => {
             cells[i].removeEventListener('click', mark);
        }
     }
+
     const mark = (e) => {
         if (values[e.target.id] === '') {
             e.target.textContent = `${play.getPlayer().symbol}`;
@@ -46,7 +47,6 @@ const board = (() => {
             play.checkWin();
             play.switchPlayers();
         }
-
     }
 
     const getValues = () => {
@@ -58,7 +58,7 @@ const board = (() => {
 
 const play = (() => {
     let p1, p2, currentPlayer;
-    let text = document.querySelector('#text-box');
+    const text = document.querySelector('#text-box');
     
     const newGame = () => {
         board.init();

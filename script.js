@@ -10,27 +10,29 @@ const board = (() => {
     let cells = getBoard();
     
     const init = () => {
-        render();
+        // render();                                may not be needed
         listen();
     }
     function getBoard () { 
         const cells = Array.from(document.querySelectorAll('.cell'));
         return cells;
     }
-    const render = () => {
-        for(let i = 0; i <= 8; i++) {
-            cells[i].textContent = `${values[i]}`;
-        }
-    }
+    // const render = () => {                       may not be needed
+    //     for(let i = 0; i <= 8; i++) {
+    //         cells[i].textContent = `${values[i]}`;
+    //     }
+    // }
     const listen = () => {
         for(let i = 0; i <= 8; i++) {
             cells[i].addEventListener('click', mark);
         }
     }
     const mark = (e) => {
-        e.target.textContent = `${play.getPlayer().symbol}`;
-        values[e.target.id] = play.getPlayer().symbol;
-        play.switchPlayers();
+        if (values[e.target.id] === '') {
+            e.target.textContent = `${play.getPlayer().symbol}`;
+            values[e.target.id] = play.getPlayer().symbol;
+            play.switchPlayers();
+        }
     }
 
     return {init};

@@ -1,6 +1,9 @@
+
+
  body {
     min-height: 100vh;
-  
+    margin: 0px;
+    font-family:Arial, Helvetica, sans-serif
  }
 
 #header {
@@ -8,10 +11,6 @@
     text-shadow: 2px 2px 4px gray;
     display: flex;
     justify-content: center;
-}
-
-#nav {
-    background-color: lightgray;
 }
 
 #main {
@@ -43,7 +42,7 @@
     border-radius: 5px;
     background-color: lightgray;
     text-shadow: 2px 2px 4px gray;
-    box-shadow: 2px 2px 4px lightgray;
+    box-shadow: 2px 2px 6px rgb(143, 143, 143);
 }
 
 #text-box {
@@ -53,15 +52,35 @@
     justify-content: center;
 }
 
-#new-game {
-    height: 50px;
-    width: 120px;
-    background-color: rgb(100, 194, 90);
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px gray;
-    margin: 200px 50px 5px 50px;
+#btn-box {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
-#invis-box {
-    width: 220px;
+.nav-btn {
+    font-size: 1.7rem;
+    height: 75px;
+    width: 180px;
+    background-color: rgb(83, 200, 69);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+    margin: 30px;
+    transition: .4s;
 }
+
+n.av-btn {
+    opacity: .7;
+}
+
+#name-box {
+    width: 300px;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+}
+
+

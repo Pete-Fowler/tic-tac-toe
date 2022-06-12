@@ -6,11 +6,14 @@ const player = (name, symbol) => {
 }
 
 const board = (() => {
-    let values = ['', '', '', '', '', '', '', '', ''];
+    let values = [];
     let cells = getBoard();
+    let text = document.querySelector('#text-box');
     
     const init = () => {
-        // render();                                may not be needed
+        values = ['', '', '', '', '', '', '', '', ''];
+        text.textContent = '';
+        render();  
         listen();
     }
     
@@ -19,18 +22,23 @@ const board = (() => {
         return cells;
     }
     
-    // const render = () => {                       may not be needed
-    //     for(let i = 0; i <= 8; i++) {
-    //         cells[i].textContent = `${values[i]}`;
-    //     }
-    // }
+    const render = () => {
+        for(let i = 0; i <= 8; i++) {
+            cells[i].textContent = `${values[i]}`;
+        }
+    }
     
     const listen = () => {
         for(let i = 0; i <= 8; i++) {
             cells[i].addEventListener('click', mark);
         }
     }
-    
+
+    const unlisten = () => {
+        for(let i = 0; i <= 8; i++) {
+            cells[i].removeEventListener('click', mark);
+       }
+    }
     const mark = (e) => {
         if (values[e.target.id] === '') {
             e.target.textContent = `${play.getPlayer().symbol}`;
@@ -45,16 +53,17 @@ const board = (() => {
         return values;
     }
 
-    return {init, getValues};
+    return {init, getValues, unlisten};
     })();
 
 const play = (() => {
     let p1, p2, currentPlayer;
+    let text = document.querySelector('#text-box');
     
     const newGame = () => {
+        board.init();
         let p1Name = prompt("What is player one's name?");
         let p2Name = prompt("what is player two's name?");
-        board.init();
 
         p1 = player(p1Name, 'X');
         p2 = player(p2Name, 'O');
@@ -74,26 +83,27 @@ const play = (() => {
         return currentPlayer;
     }
 
-    const checkWin = () => {
-        // 012 345 678 048 642
-        const condition = ((board.getValues()[0] && board.getValues()[1] && 
-        board.getValues()[2]) || (board.getValues()[3] && board.getValues()[4] 
-        && board.getValues()[5]) || (board.getValues()[6] && 
-        board.getValues()[7] && board.getValues()[8]) || (board.getValues()[0] 
-        && board.getValues()[4] && board.getValues()[8]) || 
-        (board.getValues()[6] && board.getValues()[4] && 
-        board.getValues()[2]));
-        
-        if ( condition === ('X')) {
+    const checkWin = () => {   
+        let row1 = [board.getValues()[0], board.getValues()[1], board.getValues()[2]]; 
+        let row2 = [board.getValues()[3], board.getValues()[4], board.getValues()[5]];
+        let row3 = [board.getValues()[6], board.getValues()[7], board.getValues()[8]];
+        let diag1 = [board.getValues()[0], board.getValues()[4], board.getValues()[8]];
+        let diag2 = [board.getValues()[2], board.getValues()[4], board.getValues()[6]]
+
+        if ((row1.every(e => e === 'X')) || (row1.every(e => e === 'O')) || 
+            (row2.every(e => e === 'X')) || (row2.every(e => e === 'O')) || 
+            (row3.every(e => e === 'X')) || (row3.every(e => e === 'O')) || 
+            (diag1.every(e => e === 'X')) || (diag1.every(e => e === 'O')) || 
+            (diag2.every(e => e === 'X')) || (diag2.every(e => e === 'O'))) 
+            {
+                board.unlisten();
                 declareWinner();
-            } else if (condition === 'O') {
-                declareWinner();
-            }
+            } 
     }
 
     const declareWinner = () => {
-        let text = document.querySelector('#text-box');
-        text.textContent = `${play.getPlayer.name} is the winner!`;
+        text.textContent = `${play.getPlayer().name} is the winner!`;
+        
     }
 
     return {newGame, getPlayer, switchPlayers, checkWin};

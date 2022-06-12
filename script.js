@@ -71,10 +71,28 @@ const play = (() => {
     const setNames = () => {
         let p1Name = prompt("What is player one's name?");
         let p2Name = prompt("what is player two's name?");
+        addNamesUi(p1Name, p2Name);
         p1 = player(p1Name, 'X');
         p2 = player(p2Name, 'O');
         board.init();
         currentPlayer = p1;
+    }
+
+    const addNamesUi = (p1Name, p2Name) => {
+        const p1Box = document.querySelector('#p1');
+        const p2Box = document.querySelector('#p2');
+
+        let name1 = document.createElement('p');
+        name1.id = 'name1';
+        name1.className = 'names';
+        name1.textContent = p1Name;
+        p1Box.appendChild(name1);
+
+        let name2 = document.createElement('p');
+        name2.id = 'name2';
+        name2.className = 'names';
+        name2.textContent = p2Name;
+        p2Box.appendChild(name2);
     }
 
     const switchPlayers = () => {

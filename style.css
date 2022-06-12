@@ -85,7 +85,11 @@
     font-size: 3rem;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
+}
+
+#name-box p {
+    margin: 10px;
+    text-shadow: 2px 2px 4px gray;
 }
 
 

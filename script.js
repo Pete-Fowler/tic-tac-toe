@@ -138,17 +138,24 @@ const play = (() => {
             (col3.every(e => e === 'X')) || (col3.every(e => e === 'O')) ||
             (diag1.every(e => e === 'X')) || (diag1.every(e => e === 'O')) || 
             (diag2.every(e => e === 'X')) || (diag2.every(e => e === 'O'))) 
-            {
+            {   
                 board.unlisten();
                 declareWinner();
-            } 
+            } else if (board.getValues().every(e => e != '')) {
+                board.unlisten();
+                declareDraw();
+            }
+    }
+
+    const declareDraw = () => {
+        text.textContent = `It's a draw!`; 
     }
 
     const declareWinner = () => {
         text.textContent = `${play.getPlayer().name} is the winner!`; 
     }
 
-    return {reset, getPlayer, switchPlayers, checkWin, newGame};
+    return {reset, getPlayer, checkWin, switchPlayers, newGame};
 })();
 
 const resetBtn = (() => {

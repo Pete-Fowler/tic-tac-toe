@@ -62,15 +62,19 @@ const play = (() => {
     const p1Box = document.querySelector('#p1');
     const p2Box = document.querySelector('#p2');
     
-    const newGame = () => {
-        board.init();
+    const reset = () => {
         if(p1 === undefined) {
-            setNames();
+            return;
+        } else {
+            board.init();
+            if(p2Box.classList.contains('active')) {
+                toggleNamesUi();
+            }
+            currentPlayer = p1;
         }
-        currentPlayer = p1;
     }
    
-    const setNames = () => {
+    const newGame = () => {
         let p1Name = prompt("What is player one's name?");
         let p2Name = prompt("what is player two's name?");
         addNamesUi(p1Name, p2Name);
@@ -81,6 +85,7 @@ const play = (() => {
     }
 
     const addNamesUi = (p1Name, p2Name) => {
+        document.querySelectorAll('#name1').forEach(e => e.remove());
         let name1 = document.createElement('p');
         name1.id = 'name1';
         name1.className = 'names';
@@ -88,6 +93,7 @@ const play = (() => {
         name1.textContent = p1Name;
         p1Box.appendChild(name1);
 
+        document.querySelectorAll('#name2').forEach(e => e.remove());
         let name2 = document.createElement('p');
         name2.id = 'name2';
         name2.className = 'names';
@@ -142,17 +148,17 @@ const play = (() => {
         text.textContent = `${play.getPlayer().name} is the winner!`; 
     }
 
-    return {newGame, getPlayer, switchPlayers, checkWin, setNames};
+    return {reset, getPlayer, switchPlayers, checkWin, newGame};
+})();
+
+const resetBtn = (() => {
+    const btn = document.getElementById("reset");
+    btn.addEventListener('click', play.reset);
 })();
 
 const newGameBtn = (() => {
-    const btn = document.getElementById("new-game");
+    const btn = document.querySelector('#new-game');
     btn.addEventListener('click', play.newGame);
-})();
-
-const setNamesBtn = (() => {
-    const btn = document.querySelector('#set-names');
-    btn.addEventListener('click', play.setNames);
 })();
 
 

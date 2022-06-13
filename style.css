@@ -1,10 +1,13 @@
 
+:root {
+    --c1: white;
+    --c2: lightgray;
+}
 
  body {
     min-height: 100vh;
     margin: 0px;
     font-family:Arial, Helvetica, sans-serif;
-    background: linear-gradient(.25turn, rgb(83, 200, 69), 5%, white, 95%, rgb(83, 200, 69));
  }
 
 #header {
@@ -18,7 +21,6 @@
     background-color: white;
     display: flex;
     justify-content: center;
-    background: linear-gradient(.25turn, rgb(83, 200, 69), 5%, white, 95%, rgb(83, 200, 69));
 }
 
 #board {
@@ -42,14 +44,14 @@
     height: 200px;
     font-size: 10rem;
     border-radius: 5px;
-    background-color: rgb(115, 198, 106);
+    background-color: var(--c2);
     text-shadow: 2px 2px 4px gray;
     box-shadow: 2px 2px 6px rgb(143, 143, 143);
     transition: .4s;
 }
 
 .cell:hover {
-    filter: brightness(105%);
+    opacity: .7;
 }
 
 #text-box {
@@ -72,15 +74,16 @@
     font-size: 1.7rem;
     height: 75px;
     width: 180px;
-    background-color: lightgray;
+    background-color: var(--c1);
     border-radius: 10px;
     box-shadow: 2px 2px 5px gray;
     margin: 30px;
-    transition: .4s;
+    transition: .2s;
 }
 
 .nav-btn:hover {
-    opacity: .7;
+    color: var(--c1);
+    background-color: var(--c2);
 }
 
 #name-box {

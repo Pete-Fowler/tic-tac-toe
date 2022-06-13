@@ -3,7 +3,8 @@
  body {
     min-height: 100vh;
     margin: 0px;
-    font-family:Arial, Helvetica, sans-serif
+    font-family:Arial, Helvetica, sans-serif;
+    background: linear-gradient(.25turn, rgb(83, 200, 69), 5%, white, 95%, rgb(83, 200, 69));
  }
 
 #header {
@@ -17,6 +18,7 @@
     background-color: white;
     display: flex;
     justify-content: center;
+    background: linear-gradient(.25turn, rgb(83, 200, 69), 5%, white, 95%, rgb(83, 200, 69));
 }
 
 #board {
@@ -40,7 +42,7 @@
     height: 200px;
     font-size: 10rem;
     border-radius: 5px;
-    background-color: lightgray;
+    background-color: rgb(115, 198, 106);
     text-shadow: 2px 2px 4px gray;
     box-shadow: 2px 2px 6px rgb(143, 143, 143);
     transition: .4s;
@@ -55,6 +57,7 @@
     font-size: 4rem;
     display: flex;
     justify-content: center;
+    
 }
 
 #btn-box {
@@ -69,7 +72,7 @@
     font-size: 1.7rem;
     height: 75px;
     width: 180px;
-    background-color: rgb(83, 200, 69);
+    background-color: lightgray;
     border-radius: 10px;
     box-shadow: 2px 2px 5px gray;
     margin: 30px;
@@ -124,5 +127,6 @@
 
 .active {
     transform: scale(1.2);
+    filter: brightness(120%);
     transition: 1.1s;
 }

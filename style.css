@@ -59,7 +59,13 @@
     font-size: 4rem;
     display: flex;
     justify-content: center;
-    
+    opacity: 1;
+    transition: .7s;
+}
+
+#text-box.fade {
+    opacity: 0;
+    transition: .7s;
 }
 
 #btn-box {

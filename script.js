@@ -12,7 +12,10 @@ const board = (() => {
     
     const init = () => {
         values = ['', '', '', '', '', '', '', '', ''];
-        text.textContent = '';
+        if(text.textContent != '') {
+            text.classList.toggle('fade');
+        }
+        setTimeout(() => {text.textContent = '';}, 700);
         render();  
         listen();
     }
@@ -75,7 +78,7 @@ const play = (() => {
     }
    
     const newGame = () => {
-        let p1Name = prompt("What is player one's name?");
+        let p1Name = prompt("What is player one's name?");;
         let p2Name = prompt("what is player two's name?");
         addNamesUi(p1Name, p2Name);
         p1 = player(p1Name, 'X');
@@ -148,11 +151,13 @@ const play = (() => {
     }
 
     const declareDraw = () => {
-        text.textContent = `It's a draw!`; 
+        text.textContent = `It's a draw!`;
+        text.classList.toggle('fade');
     }
 
     const declareWinner = () => {
         text.textContent = `${play.getPlayer().name} is the winner!`; 
+        text.classList.toggle('fade');
     }
 
     return {reset, getPlayer, checkWin, switchPlayers, newGame};

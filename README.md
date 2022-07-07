@@ -1,3 +1,5 @@
+<a href='https://pete-fowler.github.io/tic-tac-toe/'>Live page</a>
+
 This project was my first use of a factory and modules. Specifically, it used immediately invoked function expressions in a revealing module pattern. This seemed like an excellent way to better organize code, avoid using more global namespace, and to encapsulate variables or methods that don't need to be global.
 
 The most difficult thing about this project was learning how to make the separate IIFE modules work together.

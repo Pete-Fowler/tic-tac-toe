@@ -42,7 +42,7 @@
     align-items: center;
     width: 12vw;
     height: 12vw;
-    font-size: 10rem;
+    font-size: 10vw;
     border-radius: 5px;
     background-color: var(--c2);
     text-shadow: 2px 2px 4px gray;
@@ -56,7 +56,7 @@
 
 #text-box {
     margin-top: 30px;
-    font-size: 4rem;
+    font-size: 4vw;
     display: flex;
     justify-content: center;
     opacity: 1;
@@ -136,4 +136,50 @@
     transform: scale(1.2);
     filter: brightness(120%);
     transition: 1.1s;
+}
+
+@media (max-width: 500px) {
+    body {
+        display: grid;
+        grid: 
+            'header'    8vw
+            'main'      68vw
+            'text-box'  10vw
+            /1fr;
+    }
+    #main {
+        display: grid;
+        grid:
+            'name-box   board'      1fr
+            'btn-box    board'      1fr
+            /1fr        4fr;
+    }
+    #header {
+        grid-area: header;
+    }
+    #name-box {
+        grid-area: name-box;
+    }
+    #btn-box {
+        grid-area: btn-box;
+    }
+    #board {
+        grid-area: board;
+    }
+    #text-box {
+        grid-area: text-box;
+    }
+
+    .nav-btn {
+        margin: 5px 5px;
+        font-size: 1.5vw;
+    }
+    #board {
+        grid: repeat(3, 20vw) / repeat(3, 20vw);
+    }
+    .cell {
+        width: 20vw;
+        height: 20vw;
+        font-size: 18vw;
+    }
 }
